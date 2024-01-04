@@ -1,0 +1,49 @@
+
+ 
+ <!-- <app-not-found [visible]="!cart || cart.item.length <=0"  notFoundMessage="Items Not Found..!" resetLinkText="Go To Home Page">
+   
+ </app-not-found> -->
+ 
+ <div *ngIf="cart && cart.item.length >0" class="container">   <!--Is For Page Not Found Purpose -->
+   
+
+    <ul>
+        <li *ngFor="let cartItem of cart.item">
+            <div>
+                <img [src]="cartItem.food.imageUrl" [alt]="cartItem.food.name">
+            </div>
+            <div>
+                <a routerLink="/food/{{cartItem.food.id}}">
+                    {{cartItem.food.name}}
+                </a>
+            </div>
+            <!-- <div>
+                <select #quantitySelect (change)="changeQuantity(cartItem,quantitySelect.value)">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div> -->
+            <div>
+                {{cartItem.price | currency:"INR"}}
+            </div>
+            <div>
+                <button class="remove-button" (click)="removeFromCart(cartItem)">Remove</button>
+            </div>
+        </li>
+    </ul>
+    <div class="checkout">
+        <div class="food-count">
+            {{cart.item.length}}
+        </div>
+        <div class="total-price">
+            {{cart.totalPrice | currency:"INR"}}
+        <!-- </div>
+        <a routerLink="/checkout">Procced To Checkout</a>
+    </div> -->
+</div>
+
+
+
